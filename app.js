@@ -3,7 +3,6 @@ const app = express();
 const PORT = 5000;
 const mongoose = require("mongoose");
 const {MONGOURI} = require("./config/keys")
-const path = require('path');
 
 mongoose.connect(MONGOURI)
 mongoose.connection.on('connected', ()=>{
