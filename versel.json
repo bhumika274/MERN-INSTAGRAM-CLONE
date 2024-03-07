@@ -1,13 +1,17 @@
 {
     "builds":[
         {
-            "src":"*.js",
+            "src":"app.js",
             "use":"@vercel/node"
         }
+        { 
+            "src":"*.html", 
+            "use":"@vercel/static" 
+        } 
     ],
     {
       "rewrites": [
-        { "source": "/(.*)", "destination": "/" }
+        { "source": "/(.*)", "destination": "app.js" }
       ]
     }
 }
