@@ -2,8 +2,8 @@ const express = require("express");
 const app = express();
 const PORT = 5000;
 const mongoose = require("mongoose");
-const {MONGOURI, LOGINTOKEN} = require("./config/keys")
-
+const {MONGOURI} = require("./config/keys")
+const path = require('path');
 
 mongoose.connect(MONGOURI)
 mongoose.connection.on('connected', ()=>{
@@ -25,13 +25,13 @@ app.use(require('./routes/user'))
 
 
 if (process.env.NODE_ENV === 'production') {
-  const path = require('path');
-
-  app.use(express.static(path.join(__dirname, 'client', 'build')));
-
-  app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
-  });
+    const path = require('path');
+  
+    app.use(express.static(path.join(__dirname, 'client', 'build')));
+  
+    app.get('/', (req, res) => {
+      res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+    });
 }
 
 
